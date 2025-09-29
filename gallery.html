@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - SheGoldImpact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === BASE STYLES === */
+        :root {
+            --primary-gold: #D4AF37;
+            --light-gold: #F5E8B6;
+            --dark-gold: #B8860B;
+            --pure-white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --light-gray: #E5E5E5;
+            --dark-gray: #333333;
+            --text-color: #444444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gold);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--dark-gold);
+            color: var(--pure-white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* === HEADER & NAVIGATION === */
+        header {
+            background: var(--pure-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-gold);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* === PAGE HERO === */
+        .page-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1200x400/333/fff?text=Our+Gallery');
+            background-size: cover;
+            background-position: center;
+            color: var(--pure-white);
+            text-align: center;
+            padding: 150px 0 80px;
+            margin-top: 80px;
+        }
+
+        .page-hero h1 {
+            color: var(--pure-white);
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* === GALLERY FILTER === */
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--pure-white);
+            border: 2px solid var(--light-gray);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-gold);
+            border-color: var(--primary-gold);
+            color: var(--dark-gray);
+        }
+
+        /* === PHOTO GALLERY === */
+        .photo-gallery {
+            display: none;
+        }
+
+        .photo-gallery.active {
+            display: block;
+        }
+
+        .year-section {
+            margin-bottom: 60px;
+        }
+
+        .year-header {
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+            padding: 15px 30px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: var(--pure-white);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover .photo-overlay {
+            transform: translateY(0);
+        }
+
+        /* === VIDEO GALLERY === */
+        .video-gallery {
+            display: none;
+        }
+
+        .video-gallery.active {
+            display: block;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .video-item {
+            background: var(--pure-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        .video-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--pure-white);
+            transition: background 0.3s ease;
+        }
+
+        .video-thumbnail:hover::after {
+            background: rgba(0,0,0,0.5);
+        }
+
+        .video-thumbnail[data-year="2015"]::after { content: '▶'; }
+        .video-thumbnail[data-year="2017"]::after { content: '▶'; }
+        .video-thumbnail[data-year="2020"]::after { content: '▶'; }
+        .video-thumbnail[data-year="2021"]::after { content: '▶'; }
+        .video-thumbnail[data-year="2022"]::after { content: '▶'; }
+        .video-thumbnail[data-year="2023"]::after { content: '▶'; }
+        .video-thumbnail[data-year="2024"]::after { content: '▶'; }
+        .video-thumbnail[data-year="2025"]::after { content: '▶'; }
+
+        .video-content {
+            padding: 20px;
+        }
+
+        .video-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin-top: 15px;
+        }
+
+        /* === LIGHTBOX MODAL === */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img, .lightbox-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--pure-white);
+            font-size: 2rem;
+            cursor: pointer;
+            background: var(--primary-gold);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--pure-white);
+            padding: 10px;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--dark-gray);
+            color: var(--pure-white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: var(--light-gray);
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--pure-white);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .page-hero {
+                padding: 120px 0 60px;
+            }
+
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .gallery-filter {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filter-btn {
+                width: 200px;
+                margin-bottom: 10px;
+            }
+
+            .photos-grid, .videos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">SheGoldImpact</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our Gallery</h1>
+            <p>Capturing moments of impact and transformation since 2015</p>
+        </div>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="container">
+        <div class="gallery-filter">
+            <button class="filter-btn active" data-filter="photos">Photo Gallery</button>
+            <button class="filter-btn" data-filter="videos">Video Gallery</button>
+        </div>
+
+        <!-- Photo Gallery -->
+        <div class="photo-gallery active" id="photos-gallery">
+            <!-- 2015 Section -->
+            <div class="year-section">
+                <div class="year-header">2015 - Akropong School for the Blind</div>
+                <p>Our first major philanthropic project - supporting visually challenged students with essential supplies and educational materials</p>
+                <div class="photos-grid">
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/4a6572/fff?text=Akropong+Blind+School+1" alt="Akropong Blind School Support">
+                        <div class="photo-overlay">
+                            <h4>Akropong Blind School</h4>
+                            <p>Providing educational materials and support to visually challenged students</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/5d4037/fff?text=Akropong+Blind+School+2" alt="Student Interaction">
+                        <div class="photo-overlay">
+                            <h4>Student Engagement</h4>
+                            <p>Interactive learning sessions with students</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/0277bd/fff?text=Akropong+Blind+School+3" alt="Donation Handover">
+                        <div class="photo-overlay">
+                            <h4>Donation Ceremony</h4>
+                            <p>Official handover of supplies and support items</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2017 Section -->
+            <div class="year-section">
+                <div class="year-header">2017 - Project 100 (Kokrokoo Charities)</div>
+                <p>Supporting Kwame Sefa Kayi's initiative to provide incubators for preterm babies nationwide</p>
+                <div class="photos-grid">
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/388e3c/fff?text=Project+100+1" alt="Project 100 Support">
+                        <div class="photo-overlay">
+                            <h4>Project 100 Initiative</h4>
+                            <p>Supporting neonatal care equipment nationwide</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/6a1b9a/fff?text=Project+100+2" alt="Charity Support">
+                        <div class="photo-overlay">
+                            <h4>Charity Collaboration</h4>
+                            <p>Partnering with Kokrokoo Charities Foundation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2019-2020 Section -->
+            <div class="year-section">
+                <div class="year-header">2019-2020 - Help Orphan Project Launch</div>
+                <p>Formal establishment of HOP under Rhema Prayer City Inc and first orphanage visits</p>
+                <div class="photos-grid">
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/c2185b/fff?text=HOP+Launch+2020" alt="HOP Launch">
+                        <div class="photo-overlay">
+                            <h4>HOP Inauguration</h4>
+                            <p>Help Orphan Project official launch under Rhema Prayer City</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/ff9800/fff?text=First+Orphanage+Visit" alt="First Orphanage Visit">
+                        <div class="photo-overlay">
+                            <h4>First Orphanage Visit</h4>
+                            <p>April 2020 visit to BASCO orphanage with donations</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/795548/fff?text=Easter+Convention" alt="Easter Convention">
+                        <div class="photo-overlay">
+                            <h4>Easter Convention</h4>
+                            <p>Preaching at BASCO orphanage Easter convention</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2021-2024 Sections -->
+            <div class="year-section">
+                <div class="year-header">2021-2024 - Annual Donation Drives</div>
+                <p>Sustained support and expansion of our orphanage programs with interfaith collaboration</p>
+                <div class="photos-grid">
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/607d8b/fff?text=2021+Donation" alt="2021 Donation">
+                        <div class="photo-overlay">
+                            <h4>2021 Outreach</h4>
+                            <p>Second annual donation drive - expanding our reach</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/8d6e63/fff?text=2022+Donation" alt="2022 Donation">
+                        <div class="photo-overlay">
+                            <h4>2022 Initiative</h4>
+                            <p>Third donation drive - growing community impact</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/78909c/fff?text=2023+Donation" alt="2023 Donation">
+                        <div class="photo-overlay">
+                            <h4>2023 Program</h4>
+                            <p>Fourth donation drive - sustained support efforts</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/5d4037/fff?text=2024+Donation" alt="2024 Donation">
+                        <div class="photo-overlay">
+                            <h4>2024 Expansion</h4>
+                            <p>Fifth donation drive - reaching more communities</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2025 Section -->
+            <div class="year-section">
+                <div class="year-header">2025 - SheGoldImpact & Recent Activities</div>
+                <p>Fourth major donation drive under the SheGoldImpact brand and expansion of our philanthropic vision</p>
+                <div class="photos-grid">
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/4caf50/fff?text=Sept+2025+Donation" alt="September 2025 Donation">
+                        <div class="photo-overlay">
+                            <h4>September 2025</h4>
+                            <p>Fourth annual donation drive under SheGoldImpact</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/9c27b0/fff?text=Food+Items+Distribution" alt="Food Distribution">
+                        <div class="photo-overlay">
+                            <h4>Essential Supplies</h4>
+                            <p>Food, clothes, shoes, detergents and educational materials</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/2196f3/fff?text=Children+with+Donations" alt="Children with Donations">
+                        <div class="photo-overlay">
+                            <h4>Happy Recipients</h4>
+                            <p>Children receiving support items with joy</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/ff5722/fff?text=Team+Photo" alt="Team Photo">
+                        <div class="photo-overlay">
+                            <h4>Our Team</h4>
+                            <p>Dedicated volunteers making impact possible</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/673ab7/fff?text=Community+Engagement" alt="Community Engagement">
+                        <div class="photo-overlay">
+                            <h4>Community Interaction</h4>
+                            <p>Building relationships with beneficiary communities</p>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/600x400/009688/fff?text=Educational+Support" alt="Educational Support">
+                        <div class="photo-overlay">
+                            <h4>Learning Materials</h4>
+                            <p>Providing educational resources for children's development</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Gallery -->
+        <div class="video-gallery" id="videos-gallery">
+            <div class="videos-grid">
+                <div class="video-item">
+                    <div class="video-thumbnail" data-year="2015" style="background-image: url('https://placehold.co/600x400/4a6572/fff?text=2015+Video')"></div>
+                    <div class="video-content">
+                        <h3>Akropong Blind School 2015</h3>
+                        <p>Documentary of our first major outreach supporting visually challenged students at Akropong School for the Blind</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calendar"></i> 2015</span>
+                            <span><i class="fas fa-clock"></i> 5:23</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-item">
+                    <div class="video-thumbnail" data-year="2017" style="background-image: url('https://placehold.co/600x400/388e3c/fff?text=2017+Video')"></div>
+                    <div class="video-content">
+                        <h3>Project 100 Documentary</h3>
+                        <p>Highlights from Kwame Sefa Kayi's Project 100 initiative and our support for neonatal care equipment</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calendar"></i> 2017</span>
+                            <span><i class="fas fa-clock"></i> 8:45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-item">
+                    <div class="video-thumbnail" data-year="2020" style="background-image: url('https://placehold.co/600x400/c2185b/fff?text=2020+Video')"></div>
+                    <div class="video-content">
+                        <h3>Help Orphan Project Launch</h3>
+                        <p>The beginning of our ongoing orphanage support program and first visit to BASCO orphanage</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calendar"></i> 2020</span>
+                            <span><i class="fas fa-clock"></i> 7:12</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-item">
+                    <div class="video-thumbnail" data-year="2023" style="background-image: url('https://placehold.co/600x400/8d6e63/fff?text=2023+Video')"></div>
+                    <div class="video-content">
+                        <h3>Annual Donation Drive 2023</h3>
+                        <p>Third year of sustained support for orphanages and vulnerable children with expanded community participation</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calendar"></i> 2023</span>
+                            <span><i class="fas fa-clock"></i> 6:34</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-item">
+                    <div class="video-thumbnail" data-year="2025" style="background-image: url('https://placehold.co/600x400/4caf50/fff?text=2025+Video')"></div>
+                    <div class="video-content">
+                        <h3>September 2025 Outreach</h3>
+                        <p>Fourth major donation drive featuring food, clothes, shoes, and essential items under SheGoldImpact</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calendar"></i> 2025</span>
+                            <span><i class="fas fa-clock"></i> 9:15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-item">
+                    <div class="video-thumbnail" data-year="2025" style="background-image: url('https://placehold.co/600x400/2196f3/fff?text=Impact+Stories')"></div>
+                    <div class="video-content">
+                        <h3>Impact Testimonials</h3>
+                        <p>Stories from beneficiaries, community members, and volunteers about the difference your support makes</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calendar"></i> 2025</span>
+                            <span><i class="fas fa-clock"></i> 10:28</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-item">
+                    <div class="video-thumbnail" data-year="2025" style="background-image: url('https://placehold.co/600x400/ff9800/fff?text=Interfaith+Collaboration')"></div>
+                    <div class="video-content">
+                        <h3>Interfaith Collaboration</h3>
+                        <p>How Christian and Muslim members work together to serve communities across religious boundaries</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calendar"></i> 2025</span>
+                            <span><i class="fas fa-clock"></i> 12:45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-item">
+                    <div class="video-thumbnail" data-year="2025" style="background-image: url('https://placehold.co/600x400/9c27b0/fff?text=Future+Vision')"></div>
+                    <div class="video-content">
+                        <h3>SheGoldImpact Vision</h3>
+                        <p>Our roadmap for expanding programs and transitioning to SheGold Foundation for sustainable impact</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calendar"></i> 2025</span>
+                            <span><i class="fas fa-clock"></i> 15:20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="lightbox-close">&times;</span>
+            <div class="lightbox-nav lightbox-prev" id="lightbox-prev">&#10094;</div>
+            <div class="lightbox-nav lightbox-next" id="lightbox-next">&#10095;</div>
+            <img id="lightbox-image" src="" alt="">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SheGoldImpact</h3>
+                    <p>Care. Clothe. Feed. Educate. Include.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +233249845856</li>
+                        <li><i class="fas fa-phone"></i> +233208559409</li>
+                        <li><i class="fas fa-phone"></i> +233500119195</li>
+                        <li><i class="fas fa-envelope"></i> shegoldimpact@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SheGoldImpact. All Rights Reserved. | Powered by Ritemasta Publications</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Gallery Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const photoGallery = document.getElementById('photos-gallery');
+        const videoGallery = document.getElementById('videos-gallery');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                if (filter === 'photos') {
+                    photoGallery.classList.add('active');
+                    videoGallery.classList.remove('active');
+                } else if (filter === 'videos') {
+                    photoGallery.classList.remove('active');
+                    videoGallery.classList.add('active');
+                }
+            });
+        });
+
+        // Lightbox Functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+
+        let currentImageIndex = 0;
+        let images = [];
+
+        // Get all photo items
+        const photoItems = document.querySelectorAll('.photo-item img');
+        photoItems.forEach((img, index) => {
+            images.push({
+                src: img.src,
+                caption: img.parentElement.querySelector('.photo-overlay h4').textContent + ' - ' + 
+                        img.parentElement.querySelector('.photo-overlay p').textContent
+            });
+        });
+
+        // Open lightbox when clicking on an image
+        photoItems.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                currentImageIndex = index;
+                updateLightbox();
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Close lightbox
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        });
+
+        // Navigate lightbox
+        lightboxPrev.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateLightbox();
+        });
+
+        lightboxNext.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateLightbox();
+        });
+
+        // Update lightbox content
+        function updateLightbox() {
+            lightboxImage.src = images[currentImageIndex].src;
+            lightboxCaption.textContent = images[currentImageIndex].caption;
+        }
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                } else if (e.key === 'ArrowLeft') {
+                    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                    updateLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    currentImageIndex = (currentImageIndex + 1) % images.length;
+                    updateLightbox();
+                }
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
