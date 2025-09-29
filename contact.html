@@ -102,17 +102,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-gold);
-            color: var(--primary-gold);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-gold);
-            color: var(--dark-gray);
-        }
-
         /* === HEADER & NAVIGATION === */
         header {
             background: var(--pure-white);
@@ -613,12 +602,12 @@
                 <h2>Send us a Message</h2>
                 <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
                     <div class="form-group">
-                        <label for="name" class="form-label">Full Name</label>
+                        <label for="name" class="form-label">Full Name *</label>
                         <input type="text" id="name" name="name" class="form-control" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
+                        <label for="email" class="form-label">Email Address *</label>
                         <input type="email" id="email" name="email" class="form-control" required>
                     </div>
                     
@@ -628,12 +617,14 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="subject" class="form-label">Subject</label>
+                        <label for="subject" class="form-label">Subject *</label>
                         <select id="subject" name="subject" class="form-control" required>
                             <option value="">Select a subject</option>
                             <option value="donation">Donation Inquiry</option>
+                            <option value="crypto">Crypto Donation</option>
                             <option value="volunteer">Volunteer Opportunity</option>
                             <option value="partnership">Partnership Proposal</option>
+                            <option value="shege">SheGold Token (SHEGE) Inquiry</option>
                             <option value="event">Event Information</option>
                             <option value="general">General Inquiry</option>
                             <option value="other">Other</option>
@@ -641,8 +632,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" class="form-control" required></textarea>
+                        <label for="message" class="form-label">Message *</label>
+                        <textarea id="message" name="message" class="form-control" placeholder="Tell us how we can help you..." required></textarea>
                     </div>
                     
                     <button type="submit" class="btn">Send Message</button>
@@ -659,9 +650,9 @@
                     </div>
                     <div class="contact-details">
                         <h3>Phone Numbers</h3>
-                        <p>+233249845856</p>
-                        <p>+233208559409</p>
-                        <p>+233500119195</p>
+                        <p>+233249845856 (Primary)</p>
+                        <p>+233208559409 (Alternative)</p>
+                        <p>+233500119195 (Alternative)</p>
                         <p><em>Same numbers for Mobile Money donations</em></p>
                     </div>
                 </div>
@@ -683,7 +674,7 @@
                     </div>
                     <div class="contact-details">
                         <h3>Response Time</h3>
-                        <p><strong>Phone:</strong> Immediate during business hours</p>
+                        <p><strong>Phone:</strong> Immediate during business hours (8AM-6PM GMT)</p>
                         <p><strong>Email:</strong> Within 24 hours</p>
                         <p><strong>WhatsApp:</strong> Within a few hours</p>
                     </div>
@@ -699,6 +690,7 @@
                         <p><strong>Donation confirmations:</strong> WhatsApp</p>
                         <p><strong>Partnership proposals:</strong> Email</p>
                         <p><strong>General inquiries:</strong> Contact form</p>
+                        <p><strong>SHEGE Token inquiries:</strong> Email or contact form</p>
                     </div>
                 </div>
             </div>
@@ -712,12 +704,12 @@
                 <i class="fab fa-whatsapp"></i>
             </div>
             <h2>Connect on WhatsApp</h2>
-            <p>For quick responses and immediate assistance, message us directly on WhatsApp</p>
+            <p>For quick responses and immediate assistance, message us directly on WhatsApp. Perfect for donation confirmations and urgent inquiries.</p>
             
             <div class="qr-code">
                 <i class="fas fa-qrcode"></i>
             </div>
-            <p><strong>Scan QR code or click below</strong></p>
+            <p><strong>Scan QR code or click below to chat instantly</strong></p>
             
             <div style="margin-top: 30px;">
                 <a href="https://wa.me/233249845856" class="btn" style="background: #25D366; color: white;">
@@ -731,7 +723,7 @@
     <section class="container">
         <div class="social-section">
             <h2>Follow Us on Social Media</h2>
-            <p>Stay updated with our latest activities, events, and impact stories</p>
+            <p>Stay updated with our latest activities, events, impact stories, and SheGold Token developments</p>
             
             <div class="social-links-large">
                 <a href="#" class="social-link facebook">
@@ -780,35 +772,49 @@
                 <div class="faq-item">
                     <div class="faq-question">How can I verify that my donation was received?</div>
                     <div class="faq-answer">
-                        <p>After making a donation, please send us a message via WhatsApp or email with your name and donation details. We'll verify receipt and send you an acknowledgment within 24 hours.</p>
+                        <p>After making a donation via crypto or mobile money, please send us a message via WhatsApp or email with your name and donation details. We'll verify receipt and send you an acknowledgment with a digital receipt within 24 hours. All donations are recorded in our transparent ledger.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">Are donations tax-deductible?</div>
                     <div class="faq-answer">
-                        <p>We are working on obtaining official nonprofit status. Currently, donations are not tax-deductible, but we provide official receipts for all contributions that may be useful for your records.</p>
+                        <p>We are currently working on obtaining official nonprofit status in Ghana. While donations are not currently tax-deductible, we provide official receipts for all contributions that may be useful for your personal records. Once we transition to SheGold Foundation, we aim to provide tax benefits where applicable.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">Can I specify which project my donation supports?</div>
                     <div class="faq-answer">
-                        <p>Yes! When making a donation, you can specify if you'd like it to support a particular project (e.g., Help Orphan Project, Medical Outreach). Otherwise, it will be used where most needed.</p>
+                        <p>Absolutely! When making a donation, you can specify if you'd like it to support a particular project (e.g., Help Orphan Project, Medical Outreach, Computer Lab). If no specific project is mentioned, your donation will be used where most needed across our programs. You can track the impact of designated donations through our regular project updates.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">How often do you conduct donation drives?</div>
                     <div class="faq-answer">
-                        <p>We conduct major donation drives quarterly, with our largest event in December. We also respond to urgent needs throughout the year as they arise.</p>
+                        <p>We conduct major donation drives quarterly, with our largest events in September and December. We also respond to urgent needs throughout the year as they arise. Our Help Orphan Project provides ongoing support to partner orphanages between major drives.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">Can I volunteer remotely?</div>
                     <div class="faq-answer">
-                        <p>Absolutely! We have opportunities for remote volunteers in areas like social media management, graphic design, content writing, and virtual tutoring.</p>
+                        <p>Yes! We have numerous opportunities for remote volunteers in areas like social media management, graphic design, content writing, virtual tutoring, website development, and digital skills training. We welcome volunteers from around the world who want to contribute to our mission.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What is the SheGold Token (SHEGE) and when will it launch?</div>
+                    <div class="faq-answer">
+                        <p>SheGold Token (SHEGE) is our upcoming native cryptocurrency designed for modern philanthropy, inspired by the Queen of Sheba's legacy of generous giving. It will enable sustainable funding for our projects through blockchain technology. We're currently in the development phase and will announce the launch timeline soon. Join our mailing list for early access updates.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do you ensure transparency in fund usage?</div>
+                    <div class="faq-answer">
+                        <p>We maintain 100% transparency through regular financial reports, project updates with photos and videos, and detailed impact assessments. All major donations receive specific reports on how their funds were used. We also welcome donors to visit our projects and see the impact firsthand.</p>
                     </div>
                 </div>
             </div>
@@ -818,12 +824,20 @@
     <!-- Map Section -->
     <section class="map-section">
         <div class="container">
-            <h2 class="text-center">Our Location</h2>
-            <p class="text-center" style="max-width: 800px; margin: 0 auto 40px;">Based in Ghana, we serve communities across the country with our philanthropic initiatives.</p>
+            <h2 class="text-center">Our Locations</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 40px;">Based in Ghana with international support, we serve communities across the country with our philanthropic initiatives.</p>
             
             <div class="map-placeholder">
                 <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>
-                Interactive Map Coming Soon - Ghana Operations
+                Interactive Map Coming Soon - Operations in Amanokrom-Akwapim, Koforidua, Accra & International
+            </div>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <h4>Our Presence</h4>
+                <p><strong>Amanokrom-Akwapim:</strong> Our founding community in Eastern Region</p>
+                <p><strong>Koforidua:</strong> Expanded operations and fellowship</p>
+                <p><strong>Accra:</strong> Capital city outreach and partnerships</p>
+                <p><strong>International:</strong> Support from Canada, USA, and global partners</p>
             </div>
         </div>
     </section>
