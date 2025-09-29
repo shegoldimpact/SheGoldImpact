@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SheGoldImpact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === BASE STYLES === */
+        :root {
+            --primary-gold: #D4AF37;
+            --light-gold: #F5E8B6;
+            --dark-gold: #B8860B;
+            --pure-white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --light-gray: #E5E5E5;
+            --dark-gray: #333333;
+            --text-color: #444444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gold);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--dark-gold);
+            color: var(--pure-white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* === HEADER & NAVIGATION === */
+        header {
+            background: var(--pure-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-gold);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* === PAGE HERO === */
+        .page-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1200x400/333/fff?text=About+SheGoldImpact');
+            background-size: cover;
+            background-position: center;
+            color: var(--pure-white);
+            text-align: center;
+            padding: 150px 0 80px;
+            margin-top: 80px;
+        }
+
+        .page-hero h1 {
+            color: var(--pure-white);
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* === MISSION SECTION === */
+        .mission-section {
+            background: var(--pure-white);
+        }
+
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .mission-card {
+            background: var(--off-white);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+        }
+
+        /* === TIMELINE SECTION === */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--primary-gold);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 60px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 60px;
+        }
+
+        .timeline-content {
+            background: var(--pure-white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid var(--pure-white);
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-right: 10px solid var(--pure-white);
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+
+        .timeline-year {
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            border: 4px solid var(--pure-white);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-marker {
+            right: -48px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-marker {
+            left: -48px;
+        }
+
+        /* === VALUES SECTION === */
+        .values-section {
+            background: var(--off-white);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+        }
+
+        /* === ORGANIZATIONAL STRUCTURE === */
+        .org-structure {
+            background: var(--pure-white);
+        }
+
+        .org-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .org-card {
+            background: var(--off-white);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .org-card h3 {
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+
+        /* === TEAM SECTION === */
+        .team-section {
+            background: var(--off-white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background: var(--pure-white);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+        }
+
+        .member-photo i {
+            font-size: 3rem;
+        }
+
+        .position {
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .responsibilities {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin-top: 15px;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--dark-gray);
+            color: var(--pure-white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: var(--light-gray);
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--pure-white);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .page-hero {
+                padding: 120px 0 60px;
+            }
+
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-marker {
+                left: 21px !important;
+            }
+
+            .timeline-content::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">SheGoldImpact</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>About SheGoldImpact</h1>
+            <p>From Humble Beginnings to Global, Interfaith Impact</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="container">
+        <div class="text-content">
+            <h2>Our Authentic Story</h2>
+            <p><strong>Our Roots in Compassion</strong><br>
+            Our story begins in the heart of Amanokrom-Akpapim, Eastern Region of Ghana, where faith and compassion intersected within Rhema Prayer Fellowship. What started as simple acts of kindness in 2015 has blossomed into a global, interfaith movement of hope.</p>
+
+            <p><strong>Our Growing Interfaith Fellowship Family</strong><br>
+            • Amanokrom-Akpapim - Our foundational community<br>
+            • Koforidua - Expanded presence in Eastern Region<br>
+            • Accra - Capital city outreach<br>
+            • International - Members in Canada, USA, and beyond<br>
+            • Interfaith Unity - Christian-led with Muslim affiliate members, united in service</p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <h2 class="text-center">Our Mission</h2>
+            <p class="text-center">Guided by compassion and driven by purpose, we are committed to:</p>
+            
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Care</h3>
+                    <p>Providing compassionate support and creating safe spaces for vulnerable communities</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Clothe</h3>
+                    <p>Ensuring dignity through proper clothing and essential personal items</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Feed</h3>
+                    <p>Addressing hunger and malnutrition through sustainable food programs</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educate</h3>
+                    <p>Creating access to quality education and skill development opportunities</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Include</h3>
+                    <p>Building inclusive communities where everyone has a place and purpose</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="container">
+        <h2 class="text-center">Our Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2015</span>
+                    <h3>First Outreach - Akropong School for the Blind</h3>
+                    <p>Inspired by fellowship and prayer, our interfaith Amanokrom members contributed towards supporting visually challenged students</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2017</span>
+                    <h3>Project 100 - Kokrokoo Charities Foundation</h3>
+                    <p>Supported Kwame Sefa Kayi's initiative to provide incubators for preterm babies in deprived hospitals nationwide</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2019</span>
+                    <h3>Help Orphan Project (HOP) Launch</h3>
+                    <p>Formally established HOP under Rhema Prayer City Inc with clear mission: Care, Feed, Clothe, and Provide Educational Support to orphans</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2020</span>
+                    <h3>First Orphanage Visit & Easter Convention</h3>
+                    <p>Leader accompanied by three women ministers visited BASCO orphanage, delivered donations and preached at Easter convention</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2021-2024</span>
+                    <h3>Sustained Impact</h3>
+                    <p>Continued annual donation drives, expanding reach and impact each year with interfaith collaboration</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2025</span>
+                    <h3>SheGoldImpact & 4th Donation Drive</h3>
+                    <p>Formalized initiatives under SheGoldImpact brand with expanded vision. Conducted 4th major donation on September 20, 2025</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">Future</span>
+                    <h3>SheGold Foundation</h3>
+                    <p>Planning transition to SheGold Foundation with expanded programs and sustainable impact model</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizational Structure -->
+    <section class="org-structure">
+        <div class="container">
+            <h2 class="text-center">Our Organizational Structure</h2>
+            <div class="org-cards">
+                <div class="org-card">
+                    <h3>Rhema Prayer City Inc</h3>
+                    <p><strong>Maintains Help Orphan Project (HOP)</strong></p>
+                    <p>• Christian faith-based foundation with Muslim affiliate members<br>
+                    • Focuses on spiritual development and orphan support<br>
+                    • Continues mission with interfaith harmony</p>
+                </div>
+                <div class="org-card">
+                    <h3>SheGoldImpact</h3>
+                    <p><strong>Future: SheGold Foundation</strong></p>
+                    <p>• Broader philanthropic initiatives<br>
+                    • Open to all communities regardless of faith<br>
+                    • Strategic partnership with HOP for charity acts<br>
+                    • Builds on successful interfaith collaboration model</p>
+                </div>
+                <div class="org-card">
+                    <h3>Partnership Model</h3>
+                    <p>• Collaborative efforts when needs align<br>
+                    • Respect for each organization's distinct mission<br>
+                    • Shared commitment to humanitarian service across faith lines<br>
+                    • <strong>Proving that compassion transcends religious boundaries</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="text-center">Our Leadership Team</h2>
+            <p class="text-center">Meet the dedicated individuals driving our mission forward</p>
+            
+            <div class="team-grid">
+                <!-- Founder -->
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>[Your Name]</h3>
+                    <p class="position">Founder & Vision Lead</p>
+                    <p class="contact">Phone: [To be updated] | Email: [To be updated]</p>
+                    <div class="responsibilities">
+                        • Overall strategic direction<br>
+                        • Donor relations and partnerships<br>
+                        • Spiritual guidance and oversight<br>
+                        • Final decision-making authority
+                    </div>
+                </div>
+
+                <!-- Programs Director -->
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>[Name to be updated]</h3>
+                    <p class="position">Programs & Operations Director</p>
+                    <p class="contact">Phone: [To be updated] | Email: [To be updated]</p>
+                    <div class="responsibilities">
+                        • Project planning and execution<br>
+                        • Donation drive management<br>
+                        • Community outreach coordination<br>
+                        • Orphanage and institution relations
+                    </div>
+                </div>
+
+                <!-- Community Relations -->
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>[Name to be updated]</h3>
+                    <p class="position">Community Relations & Volunteer Coordinator</p>
+                    <p class="contact">Phone: [To be updated] | Email: [To be updated]</p>
+                    <div class="responsibilities">
+                        • Volunteer recruitment and coordination<br>
+                        • Community engagement and partnerships<br>
+                        • Local outreach program organization<br>
+                        • Stakeholder communication
+                    </div>
+                </div>
+
+                <!-- Finance Manager -->
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>[Name to be updated]</h3>
+                    <p class="position">Finance & Resource Manager</p>
+                    <p class="contact">Phone: [To be updated] | Email: [To be updated]</p>
+                    <div class="responsibilities">
+                        • Donation management and financial records<br>
+                        • Resource allocation and inventory<br>
+                        • Transparent financial reporting<br>
+                        • Budget planning and oversight
+                    </div>
+                </div>
+
+                <!-- Communications Lead -->
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>[Name to be updated]</h3>
+                    <p class="position">Communications & Documentation Lead</p>
+                    <p class="contact">Phone: [To be updated] | Email: [To be updated]</p>
+                    <div class="responsibilities">
+                        • Photography, videography, and storytelling<br>
+                        • Social media and website management<br>
+                        • Impact documentation and reporting<br>
+                        • Public relations and media outreach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="text-center">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Compassion</h3>
+                    <p>We lead with empathy and understanding in all our interactions across faith lines</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>Transparency and honesty guide every decision and action</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Impact</h3>
+                    <p>We measure success by the tangible difference we make in lives</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Interfaith Unity</h3>
+                    <p>Demonstrating that different faiths can work together for common good</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SheGoldImpact</h3>
+                    <p>Care. Clothe. Feed. Educate. Include.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +233249845856</li>
+                        <li><i class="fas fa-phone"></i> +233208559409</li>
+                        <li><i class="fas fa-phone"></i> +233500119195</li>
+                        <li><i class="fas fa-envelope"></i> shegoldimpact@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SheGoldImpact. All Rights Reserved. | Powered by Ritemasta Publications</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
