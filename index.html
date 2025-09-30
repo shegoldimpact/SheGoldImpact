@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SheGoldImpact – Care. Clothe. Feed. Educate. Include.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === ENHANCED BASE STYLES === */
+        :root {
+            --primary-gold: #D4AF37;
+            --light-gold: #F5E8B6;
+            --dark-gold: #B8860B;
+            --soft-pink: #F8E9E9;
+            --pure-white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --light-gray: #E5E5E5;
+            --dark-gray: #333333;
+            --text-color: #444444;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--dark-gray);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* === ENHANCED HEADER & NAVIGATION === */
+        header {
+            background: var(--pure-white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: '👑';
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 35px;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+        }
+
+        /* === WORKING COUNTDOWN TIMER & SCROLLING EVENTS === */
+        .carousel-header {
+            position: relative;
+            height: 70px;
+            background: linear-gradient(135deg, var(--dark-gray), #2c2c2c);
+            color: var(--pure-white);
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .countdown-timer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--dark-gray);
+            padding: 15px 25px;
+            font-weight: 600;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .countdown-timer i {
+            font-size: 1.2rem;
+        }
+
+        .scrolling-events {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: calc(100% - 250px);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .event-ticker {
+            white-space: nowrap;
+            animation: scrollEvents 30s linear infinite;
+        }
+
+        @keyframes scrollEvents {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .event-item {
+            display: inline-block;
+            margin-right: 50px;
+            font-size: 1rem;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* === ENHANCED HERO / SLIDER === */
+        .hero {
+            margin-top: 0;
+            position: relative;
+            height: 90vh;
+            min-height: 700px;
+            overflow: hidden;
+        }
+
+        .slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--pure-white);
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            background: rgba(0,0,0,0.7);
+            padding: 60px;
+            border-radius: 20px;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .slide.active .slide-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .slide h1 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: var(--pure-white);
+            -webkit-text-fill-color: var(--pure-white);
+        }
+
+        .slide p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .slider-dot {
+            width: 15px;
+            height: 15px;
+            background: var(--pure-white);
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .slider-dot.active {
+            opacity: 1;
+            background: var(--primary-gold);
+            transform: scale(1.2);
+            border-color: var(--pure-white);
+        }
+
+        /* === ENHANCED INTRO SECTION === */
+        .intro {
+            padding: 120px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--soft-pink), var(--off-white));
+            position: relative;
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .intro h2 {
+            margin-bottom: 30px;
+        }
+
+        .intro p {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* === ENHANCED STATS SECTION === */
+        .stats {
+            background: var(--pure-white);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+            border-radius: 2px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            flex: 1;
+            min-width: 200px;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        /* === ENHANCED VIDEO SECTION === */
+        .video-section {
+            padding: 120px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--off-white), var(--soft-pink));
+        }
+
+        .video-placeholder {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            background: linear-gradient(135deg, var(--light-gray), var(--pure-white));
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            color: var(--dark-gray);
+            font-size: 1.3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .video-placeholder:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        /* === SCROLL ANIMATION CLASSES === */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === ENHANCED FOOTER === */
+        footer {
+            background: linear-gradient(135deg, var(--dark-gray), #2c2c2c);
+            color: var(--pure-white);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-gold);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-gold);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px) rotate(5deg);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 1rem;
+            color: var(--light-gray);
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--pure-white);
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .countdown-timer {
+                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
+
+            .scrolling-events {
+                width: calc(100% - 150px);
+            }
+
+            .event-item {
+                font-size: 0.8rem;
+                margin-right: 20px;
+            }
+
+            .slide h1 {
+                font-size: 2.2rem;
+            }
+
+            .slide p {
+                font-size: 1rem;
+            }
+
+            .slide-content {
+                padding: 30px;
+                margin: 0 20px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* === VISITOR COUNTER === */
+        .visitor-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* === AI GREETING POPUP === */
+        .ai-greeting {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: var(--pure-white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            z-index: 2000;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 3px solid var(--primary-gold);
+        }
+
+        .ai-greeting.active {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .ai-greeting .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+            transition: var(--transition);
+        }
+
+        .ai-greeting .close-btn:hover {
+            color: var(--primary-gold);
+            transform: rotate(90deg);
+        }
+
+        .ai-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">SheGoldImpact</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Countdown Timer & Scrolling Events -->
+    <div class="carousel-header">
+        <div class="countdown-timer">
+            <i class="fas fa-clock"></i> Next Visit: <span id="countdown-days">245</span> days
+        </div>
+        <div class="scrolling-events">
+            <div class="event-ticker">
+                <span class="event-item">🎗️ Medical Outreach - January 2026</span>
+                <span class="event-item">💻 Computer Lab Launch - March 2026</span>
+                <span class="event-item">👵 Widow Support Program - April 2026</span>
+                <span class="event-item">📚 Children's Education Drive - May 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Carousel -->
+    <section class="hero">
+        <div class="slider">
+            <!-- Slide 1 -->
+            <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1200x600/333/fff?text=SheGoldImpact');">
+                <div class="slide-content">
+                    <h1>SheGoldImpact</h1>
+                    <p>Care. Clothe. Feed. Educate. Include. Creating sustainable impact through compassion in action since 2015.</p>
+                    <a href="about.html" class="btn">Learn More</a>
+                    <a href="support.html" class="btn btn-outline">Support Us</a>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1200x600/555/fff?text=Making+a+Difference');">
+                <div class="slide-content">
+                    <h1>Making a Difference</h1>
+                    <p>Transforming lives through sustainable philanthropy and interfaith collaboration across Ghana.</p>
+                    <a href="projects.html" class="btn">Our Projects</a>
+                    <a href="gallery.html" class="btn btn-outline">See Gallery</a>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1200x600/777/fff?text=Join+Our+Mission');">
+                <div class="slide-content">
+                    <h1>Join Our Mission</h1>
+                    <p>Together we can create lasting impact in our communities through your support and partnership.</p>
+                    <a href="contact.html" class="btn">Get Involved</a>
+                    <a href="support.html" class="btn btn-outline">Donate Now</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-nav">
+            <div class="slider-dot active" data-slide="0"></div>
+            <div class="slider-dot" data-slide="1"></div>
+            <div class="slider-dot" data-slide="2"></div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro fade-in">
+        <div class="container">
+            <h2>Welcome to SheGoldImpact</h2>
+            <p>From humble beginnings in Amanokrom-Akwapim to a global interfaith movement, we've been creating sustainable impact through compassion in action since 2015.</p>
+            <p>Our journey spans orphanage support, community development, and interfaith collaboration, proving that humanitarian work transcends religious boundaries.</p>
+            <a href="about.html" class="btn">Our Story</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">7+</span>
+                    <span class="stat-label">Years of Service</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-label">Lives Impacted</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Annual Donations</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section fade-in">
+        <div class="container">
+            <h2>Our Impact in Action</h2>
+            <p>Watch how your support is making a difference in communities across Ghana</p>
+            <div class="video-placeholder">
+                <i class="fas fa-play-circle" style="font-size: 3rem; margin-right: 15px;"></i>
+                Featured Video Coming Soon
+            </div>
+        </div>
+    </section>
+
+    <!-- Visitor Counter -->
+    <div class="visitor-counter">
+        <i class="fas fa-users"></i>
+        <span id="visit-count">1</span> Visitors
+    </div>
+
+    <!-- AI Greeting Popup -->
+    <div class="overlay" id="greeting-overlay"></div>
+    <div class="ai-greeting" id="ai-greeting">
+        <button class="close-btn">&times;</button>
+        <div class="ai-icon">
+            <i class="fas fa-gem"></i>
+        </div>
+        <h3>Welcome to SheGoldImpact! 👑</h3>
+        <p>Thank you for visiting our mission of compassion and impact. Together, we're creating sustainable change in communities across Ghana.</p>
+        <p><strong>Care. Clothe. Feed. Educate. Include.</strong></p>
+        <a href="about.html" class="btn" style="margin-top: 15px;">Learn Our Story</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SheGoldImpact</h3>
+                    <p>Care. Clothe. Feed. Educate. Include.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +233249845856</li>
+                        <li><i class="fas fa-phone"></i> +233208559409</li>
+                        <li><i class="fas fa-phone"></i> +233500119195</li>
+                        <li><i class="fas fa-envelope"></i> shegoldimpact@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SheGoldImpact. All Rights Reserved. | Powered by Ritemasta Publications</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // WORKING Carousel Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+        
+        // Auto-advance slides
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 6000);
+        
+        // Dot click events
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // WORKING Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('December 15, 2025').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById('countdown-days').textContent = days;
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 24 * 60 * 60 * 1000);
+
+        // WORKING Scroll Animation Functionality
+        window.addEventListener('scroll', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(function(el) {
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        });
+
+        // Trigger once on load
+        window.dispatchEvent(new Event('scroll'));
+
+        // Visitor Counter
+        function updateVisitorCount() {
+            let count = localStorage.getItem('shegoldVisitors');
+            count = count ? parseInt(count) + 1 : 1;
+            localStorage.setItem('shegoldVisitors', count);
+            document.getElementById('visit-count').textContent = count;
+        }
+
+        // AI Greeting Popup
+        function showGreeting() {
+            setTimeout(() => {
+                document.getElementById('ai-greeting').classList.add('active');
+                document.getElementById('greeting-overlay').classList.add('active');
+            }, 2000);
+        }
+
+        function closeGreeting() {
+            document.getElementById('ai-greeting').classList.remove('active');
+            document.getElementById('greeting-overlay').classList.remove('active');
+        }
+
+        // Initialize features
+        document.addEventListener('DOMContentLoaded', function() {
+            updateVisitorCount();
+            showGreeting();
+            
+            // Close greeting events
+            document.querySelector('.close-btn').addEventListener('click', closeGreeting);
+            document.getElementById('greeting-overlay').addEventListener('click', closeGreeting);
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('.nav-links').classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
