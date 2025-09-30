@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - SheGoldImpact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === ENHANCED BASE STYLES === */
+        :root {
+            --primary-gold: #D4AF37;
+            --light-gold: #F5E8B6;
+            --dark-gold: #B8860B;
+            --soft-pink: #F8E9E9;
+            --pure-white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --light-gray: #E5E5E5;
+            --dark-gray: #333333;
+            --text-color: #444444;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--dark-gray);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+        }
+
+        .btn-small {
+            padding: 10px 25px;
+            font-size: 0.9rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* === ENHANCED HEADER & NAVIGATION === */
+        header {
+            background: var(--pure-white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: '👑';
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 35px;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+        }
+
+        /* === ENHANCED PAGE HERO === */
+        .page-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1200x400/333/fff?text=Events+Calendar');
+            background-size: cover;
+            background-position: center;
+            color: var(--pure-white);
+            text-align: center;
+            padding: 180px 0 100px;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .page-hero h1 {
+            color: var(--pure-white);
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            -webkit-text-fill-color: var(--pure-white);
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* === ENHANCED UPCOMING EVENTS === */
+        .upcoming-events {
+            background: var(--pure-white);
+            position: relative;
+        }
+
+        .upcoming-events::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .event-highlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+            background: linear-gradient(135deg, var(--soft-pink), var(--off-white));
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 2px solid var(--light-gold);
+        }
+
+        .event-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: var(--transition);
+        }
+
+        .event-image:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .event-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .event-countdown {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--dark-gray);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            border: 3px solid var(--light-gold);
+        }
+
+        .countdown-timer {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .event-details {
+            margin-bottom: 25px;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background: var(--pure-white);
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .meta-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .meta-item i {
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+        }
+
+        /* === ENHANCED EVENT LIST === */
+        .events-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background: var(--pure-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .event-card-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .event-card:hover .event-card-image {
+            transform: scale(1.05);
+        }
+
+        .event-card-content {
+            padding: 30px;
+        }
+
+        .event-date {
+            background: linear-gradient(135deg, var(--light-gold), var(--primary-gold));
+            color: var(--dark-gray);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .event-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .event-card-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        /* === ENHANCED PAST EVENTS TIMELINE === */
+        .past-events {
+            background: linear-gradient(135deg, var(--off-white), var(--soft-pink));
+            position: relative;
+        }
+
+        .past-events::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .events-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 0;
+        }
+
+        .events-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 3px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .timeline-event {
+            position: relative;
+            margin-bottom: 60px;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-event.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-event:nth-child(odd) {
+            left: 0;
+            padding-right: 80px;
+            text-align: right;
+        }
+
+        .timeline-event:nth-child(even) {
+            left: 50%;
+            padding-left: 80px;
+        }
+
+        .timeline-content {
+            background: var(--pure-white);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            border: 2px solid var(--light-gold);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: var(--primary-gold);
+        }
+
+        .timeline-event:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 40px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid var(--pure-white);
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+
+        .timeline-event:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 40px;
+            width: 0;
+            height: 0;
+            border-right: 10px solid var(--pure-white);
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+
+        .timeline-date {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--dark-gray);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: 40px;
+            width: 25px;
+            height: 25px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            border: 6px solid var(--pure-white);
+            box-shadow: 0 0 0 3px var(--primary-gold);
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .timeline-event:hover .timeline-marker {
+            transform: scale(1.3);
+            box-shadow: 0 0 0 3px var(--primary-gold), 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .timeline-event:nth-child(odd) .timeline-marker {
+            right: -53px;
+        }
+
+        .timeline-event:nth-child(even) .timeline-marker {
+            left: -53px;
+        }
+
+        .timeline-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .timeline-image {
+            height: 90px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .timeline-image:hover {
+            transform: scale(1.1);
+            border-color: var(--primary-gold);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* === ENHANCED CALENDAR VIEW === */
+        .calendar-section {
+            background: var(--pure-white);
+            position: relative;
+        }
+
+        .calendar-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .calendar-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--pure-white);
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 2px solid var(--light-gold);
+        }
+
+        .calendar-header {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--dark-gray);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .calendar-header h3 {
+            color: var(--dark-gray);
+            font-size: 1.8rem;
+            margin-bottom: 0;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            background: var(--light-gray);
+            padding: 2px;
+        }
+
+        .calendar-day {
+            background: var(--off-white);
+            padding: 20px 10px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--dark-gray);
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .calendar-date {
+            background: var(--pure-white);
+            padding: 15px 10px;
+            text-align: center;
+            min-height: 100px;
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+
+        .calendar-date:hover {
+            background: var(--off-white);
+            transform: scale(1.02);
+        }
+
+        .calendar-date.has-event {
+            background: linear-gradient(135deg, var(--light-gold), var(--soft-pink));
+        }
+
+        .calendar-date.has-event::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .calendar-event {
+            font-size: 0.75rem;
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+            padding: 4px 8px;
+            border-radius: 15px;
+            margin-top: 8px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+        }
+
+        /* === ENHANCED EVENT MODAL === */
+        .event-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .event-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--pure-white);
+            border-radius: 25px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            border: 3px solid var(--primary-gold);
+            animation: modalAppear 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 25px;
+            border-bottom: 2px solid var(--light-gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--off-white), var(--pure-white));
+            border-radius: 25px 25px 0 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-gold);
+            background: var(--light-gold);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* === ENHANCED FOOTER === */
+        footer {
+            background: linear-gradient(135deg, var(--dark-gray), #2c2c2c);
+            color: var(--pure-white);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-gold);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-gold);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px) rotate(5deg);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 1rem;
+            color: var(--light-gray);
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--pure-white);
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .page-hero {
+                padding: 150px 0 80px;
+            }
+
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .event-highlight {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px;
+            }
+
+            .events-list {
+                grid-template-columns: 1fr;
+            }
+
+            .event-card-actions {
+                flex-direction: column;
+            }
+
+            .events-timeline::before {
+                left: 30px;
+            }
+
+            .timeline-event {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-event:nth-child(odd),
+            .timeline-event:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-marker {
+                left: 21px !important;
+            }
+
+            .timeline-content::after {
+                display: none;
+            }
+
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                font-size: 0.8rem;
+            }
+
+            .calendar-date {
+                min-height: 80px;
+                padding: 10px 5px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* === SCROLL ANIMATION CLASSES === */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">SheGoldImpact</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Events Calendar</h1>
+            <p>Join us in making a difference through our upcoming activities and community outreach programs</p>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="upcoming-events fade-in">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            
+            <!-- Main Event Highlight -->
+            <div class="event-highlight">
+                <div class="event-image">
+                    <img src="https://placehold.co/600x400/4caf50/fff?text=Dec+2025+Donation+Drive" alt="December 2025 Donation Drive">
+                </div>
+                <div class="event-details">
+                    <div class="event-countdown">
+                        <h3>🎄 Next Event Countdown 🎄</h3>
+                        <div class="countdown-timer" id="countdown-timer">245d 12h 45m</div>
+                        <p>Until December 2025 Donation Drive</p>
+                    </div>
+                    
+                    <h3>December 2025 Orphanage Visit & Donation Drive</h3>
+                    <p>Our major year-end initiative to support orphanages with essential supplies, food items, clothing, and educational materials for the holiday season. Building on our successful Help Orphan Project model with expanded reach and community participation.</p>
+                    
+                    <div class="event-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>December 15, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>10:00 AM - 4:00 PM</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Partner Orphanages, Accra Region</span>
+                        </div>
+                    </div>
+                    
+                    <p><strong>🎯 Goal:</strong> Support 500+ children with essential supplies across multiple orphanages</p>
+                    <p><strong>📦 Items Needed:</strong> Food, clothes, shoes, detergents, educational materials, toys</p>
+                    <p><strong>👥 Volunteers Needed:</strong> 20+ volunteers for packing and distribution</p>
+                    
+                    <div class="event-card-actions">
+                        <a href="support.html" class="btn">Support This Event</a>
+                        <a href="contact.html" class="btn btn-outline">Volunteer Now</a>
+                        <a href="gallery.html" class="btn btn-outline">See Past Events</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Upcoming Events -->
+            <div class="events-list">
+                <div class="event-card">
+                    <div class="event-card-image" style="background-image: url('https://placehold.co/600x400/2196f3/fff?text=Medical+Outreach')"></div>
+                    <div class="event-card-content">
+                        <span class="event-date">January 2026</span>
+                        <h3>🩺 Medical Outreach Program</h3>
+                        <p>Health screening and medical support initiative for underserved communities with focus on preventive care, basic health education, and access to healthcare services.</p>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Rural Communities in Eastern Region</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-user-md"></i>
+                                <span>Medical Professionals Needed</span>
+                            </div>
+                        </div>
+                        <div class="event-card-actions">
+                            <a href="contact.html" class="btn btn-small btn-outline">Express Interest</a>
+                            <a href="support.html" class="btn btn-small">Support Medical</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-card-image" style="background-image: url('https://placehold.co/600x400/9c27b0/fff?text=Computer+Lab+Launch')"></div>
+                    <div class="event-card-content">
+                        <span class="event-date">March 2026</span>
+                        <h3>💻 Computer Lab Launch</h3>
+                        <p>Inauguration of digital literacy centers in partner orphanages to provide computer skills training, coding basics, and AI awareness for children's future opportunities.</p>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Selected Orphanages</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-laptop-code"></i>
+                                <span>IT Volunteers Welcome</span>
+                            </div>
+                        </div>
+                        <div class="event-card-actions">
+                            <a href="contact.html" class="btn btn-small btn-outline">Express Interest</a>
+                            <a href="support.html" class="btn btn-small">Support Tech</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-card-image" style="background-image: url('https://placehold.co/600x400/ff9800/fff?text=Widow+Support')"></div>
+                    <div class="event-card-content">
+                        <span class="event-date">April 2026</span>
+                        <h3>👵 Widow Support Program Launch</h3>
+                        <p>Community outreach focusing on empowering widows through skills training, resource provision, and creating sustainable livelihood opportunities for economic independence.</p>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Local Communities in Koforidua</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-hands-helping"></i>
+                                <span>Skills Trainers Needed</span>
+                            </div>
+                        </div>
+                        <div class="event-card-actions">
+                            <a href="contact.html" class="btn btn-small btn-outline">Express Interest</a>
+                            <a href="support.html" class="btn btn-small">Support Widows</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-card-image" style="background-image: url('https://placehold.co/600x400/4caf50/fff?text=Educational+Tour')"></div>
+                    <div class="event-card-content">
+                        <span class="event-date">June 2026</span>
+                        <h3>📚 Educational Tour & Career Day</h3>
+                        <p>Organizing educational tours and career guidance sessions for orphanage children to expose them to various career paths and educational opportunities.</p>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Various Educational Institutions</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Mentors & Guides Needed</span>
+                            </div>
+                        </div>
+                        <div class="event-card-actions">
+                            <a href="contact.html" class="btn btn-small btn-outline">Express Interest</a>
+                            <a href="support.html" class="btn btn-small">Support Education</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar View -->
+    <section class="calendar-section fade-in">
+        <div class="container">
+            <h2>Event Calendar 2025-2026</h2>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h3>December 2025 - Major Events</h3>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-day">Sun</div>
+                    <div class="calendar-day">Mon</div>
+                    <div class="calendar-day">Tue</div>
+                    <div class="calendar-day">Wed</div>
+                    <div class="calendar-day">Thu</div>
+                    <div class="calendar-day">Fri</div>
+                    <div class="calendar-day">Sat</div>
+                    
+                    <!-- Empty days for December 1st alignment -->
+                    <div class="calendar-date"></div>
+                    <div class="calendar-date">1</div>
+                    <div class="calendar-date">2</div>
+                    <div class="calendar-date">3</div>
+                    <div class="calendar-date">4</div>
+                    <div class="calendar-date">5</div>
+                    <div class="calendar-date">6</div>
+                    <div class="calendar-date">7</div>
+                    <div class="calendar-date">8</div>
+                    <div class="calendar-date">9</div>
+                    <div class="calendar-date">10</div>
+                    <div class="calendar-date">11</div>
+                    <div class="calendar-date">12</div>
+                    <div class="calendar-date">13</div>
+                    <div class="calendar-date">14</div>
+                    <div class="calendar-date has-event">15
+                        <div class="calendar-event">Major Donation Drive</div>
+                    </div>
+                    <div class="calendar-date">16</div>
+                    <div class="calendar-date">17</div>
+                    <div class="calendar-date">18</div>
+                    <div class="calendar-date">19</div>
+                    <div class="calendar-date">20</div>
+                    <div class="calendar-date">21</div>
+                    <div class="calendar-date">22</div>
+                    <div class="calendar-date">23</div>
+                    <div class="calendar-date">24</div>
+                    <div class="calendar-date">25</div>
+                    <div class="calendar-date">26</div>
+                    <div class="calendar-date">27</div>
+                    <div class="calendar-date">28</div>
+                    <div class="calendar-date">29</div>
+                    <div class="calendar-date">30</div>
+                    <div class="calendar-date">31</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; text-align: center; background: var(--off-white); padding: 30px; border-radius: 20px; border: 2px solid var(--light-gold);">
+                <h4 style="color: var(--primary-gold); margin-bottom: 25px;">📅 2026 Event Schedule</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left;">
+                    <div><strong>January:</strong> 🩺 Medical Outreach Program</div>
+                    <div><strong>March:</strong> 💻 Computer Lab Launch</div>
+                    <div><strong>April:</strong> 👵 Widow Support Program</div>
+                    <div><strong>June:</strong> 📚 Educational Tour & Career Day</div>
+                    <div><strong>September:</strong> 🎁 Quarterly Donation Drive</div>
+                    <div><strong>December:</strong> 🎄 Year-End Major Donation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Events -->
+    <section class="past-events fade-in">
+        <div class="container">
+            <h2>Our Event History</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 50px;">A journey of impact through consistent community engagement and humanitarian outreach since 2015</p>
+            
+            <div class="events-timeline">
+                <!-- September 2025 Event -->
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">September 20, 2025</div>
+                        <h3>Fourth Annual Orphanage Donation</h3>
+                        <p>Successful donation drive providing food items, shoes, clothes, detergents and essential supplies to orphanages. This marked our fourth consistent annual support since 2020 under the SheGoldImpact brand, with record community participation.</p>
+                        <div class="timeline-images">
+                            <div class="timeline-image" style="background-image: url('https://placehold.co/300x200/4caf50/fff?text=Sept+2025+1')" data-image="https://placehold.co/600x400/4caf50/fff?text=Sept+2025+1"></div>
+                            <div class="timeline-image" style="background-image: url('https://placehold.co/300x200/4caf50/fff?text=Sept+2025+2')" data-image="https://placehold.co/600x400/4caf50/fff?text=Sept+2025+2"></div>
+                            <div class="timeline-image" style="background-image: url('https://placehold.co/300x200/4caf50/fff?text=Sept+2025+3')" data-image="https://placehold.co/600x400/4caf50/fff?text=Sept+2025+3"></div>
+                        </div>
+                        <a href="gallery.html" class="btn btn-small" style="margin-top: 20px;">View Full Gallery</a>
+                    </div>
+                </div>
+
+                <!-- 2023 Event -->
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">December 2023</div>
+                        <h3>Third Annual Donation Drive</h3>
+                        <p>Continued support for orphanages with expanded reach and increased community participation. Strengthened our partnership model with local communities and established new relationships with corporate sponsors.</p>
+                        <div class="timeline-images">
+                            <div class="timeline-image" style="background-image: url('https://placehold.co/300x200/8d6e63/fff?text=2023+Event')" data-image="https://placehold.co/600x400/8d6e63/fff?text=2023+Event"></div>
+                        </div>
+                        <a href="gallery.html" class="btn btn-small btn-outline" style="margin-top: 20px;">View Photos</a>
+                    </div>
+                </div>
+
+                <!-- 2022 Event -->
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">December 2022</div>
+                        <h3>Second Annual Donation Drive</h3>
+                        <p>Building on previous success with more orphanages included in the support program. Established consistent annual donation pattern and developed systematic approach to beneficiary needs assessment.</p>
+                        <a href="gallery.html" class="btn btn-small btn-outline" style="margin-top: 20px;">View Photos</a>
+                    </div>
+                </div>
+
+                <!-- 2021 Event -->
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">December 2021</div>
+                        <h3>Help Orphan Project Expansion</h3>
+                        <p>Second year of the ongoing orphanage support initiative with increased donor participation and structured approach to resource allocation and impact measurement.</p>
+                    </div>
+                </div>
+
+                <!-- 2020 Event -->
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">April 2020</div>
+                        <h3>First Help Orphan Project Launch</h3>
+                        <p>Inaugural donation drive and Easter convention at BASCO orphanage, establishing our ongoing commitment to orphanage support under Rhema Prayer City Inc with interfaith collaboration.</p>
+                    </div>
+                </div>
+
+                <!-- 2019 Event -->
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2019</div>
+                        <h3>Help Orphan Project Established</h3>
+                        <p>Formal establishment of HOP under Rhema Prayer City Inc with clear mission to care, feed, clothe and provide educational support to orphans through structured community programs.</p>
+                    </div>
+                </div>
+
+                <!-- 2017 Event -->
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2017</div>
+                        <h3>Project 100 Support</h3>
+                        <p>Partnership with Kwame Sefa Kayi's Kokrokoo Charities Foundation to support Project 100 for neonatal care equipment in hospitals nationwide, expanding our impact beyond local communities.</p>
+                    </div>
+                </div>
+
+                <!-- 2015 Event -->
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2015</div>
+                        <h3>Akropong School for the Blind</h3>
+                        <p>Our first major philanthropic project supporting visually challenged students with essential supplies and educational materials, planting the seeds for our ongoing humanitarian work.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Modal -->
+    <div class="event-modal" id="event-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Event Details</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image" id="modal-image"></div>
+                <div id="modal-description">
+                    <p>Photo from our event archive showcasing the impact of your support. Visit the Gallery page for more photos and videos of our community outreach programs.</p>
+                    <a href="gallery.html" class="btn" style="margin-top: 20px;">Explore Gallery</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SheGoldImpact</h3>
+                    <p>Care. Clothe. Feed. Educate. Include.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +233249845856</li>
+                        <li><i class="fas fa-phone"></i> +233208559409</li>
+                        <li><i class="fas fa-phone"></i> +233500119195</li>
+                        <li><i class="fas fa-envelope"></i> shegoldimpact@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SheGoldImpact. All Rights Reserved. | Powered by Ritemasta Publications</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // WORKING Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('December 15, 2025').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            
+            document.getElementById('countdown-timer').textContent = `${days}d ${hours}h ${minutes}m`;
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Scroll Animation Functionality
+        window.addEventListener('scroll', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const timelineEvents = document.querySelectorAll('.timeline-event');
+            
+            fadeElements.forEach(function(el) {
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+
+            timelineEvents.forEach(function(event) {
+                const eventTop = event.getBoundingClientRect().top;
+                const eventVisible = 100;
+                
+                if (eventTop < window.innerHeight - eventVisible) {
+                    event.classList.add('active');
+                }
+            });
+        });
+
+        // Event Modal Functionality
+        const eventModal = document.getElementById('event-modal');
+        const modalClose = document.getElementById('modal-close');
+        const modalTitle = document.getElementById('modal-title');
+        const modalImage = document.getElementById('modal-image');
+        const modalDescription = document.getElementById('modal-description');
+
+        // Timeline image click events
+        document.querySelectorAll('.timeline-image').forEach(image => {
+            image.addEventListener('click', () => {
+                modalImage.style.backgroundImage = image.style.backgroundImage;
+                modalTitle.textContent = 'Event Photo Gallery';
+                modalDescription.innerHTML = `
+                    <p>Photo from our event archive showcasing the impact of your support. Each image tells a story of hope, compassion, and community transformation.</p>
+                    <p><strong>Impact Made Possible By Your Generosity</strong></p>
+                    <a href="gallery.html" class="btn" style="margin-top: 20px;">Explore Full Gallery</a>
+                `;
+                eventModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            eventModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        eventModal.addEventListener('click', (e) => {
+            if (e.target === eventModal) {
+                eventModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Trigger once on load
+        window.dispatchEvent(new Event('scroll'));
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
