@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Us - SheGoldImpact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === ENHANCED BASE STYLES === */
+        :root {
+            --primary-gold: #D4AF37;
+            --light-gold: #F5E8B6;
+            --dark-gold: #B8860B;
+            --soft-pink: #F8E9E9;
+            --pure-white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --light-gray: #E5E5E5;
+            --dark-gray: #333333;
+            --text-color: #444444;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--dark-gray);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+        }
+
+        .btn-small {
+            padding: 10px 25px;
+            font-size: 0.9rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* === ENHANCED HEADER & NAVIGATION === */
+        header {
+            background: var(--pure-white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: '👑';
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 35px;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+        }
+
+        /* === ENHANCED PAGE HERO === */
+        .page-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1200x400/333/fff?text=Support+Our+Mission');
+            background-size: cover;
+            background-position: center;
+            color: var(--pure-white);
+            text-align: center;
+            padding: 180px 0 100px;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .page-hero h1 {
+            color: var(--pure-white);
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            -webkit-text-fill-color: var(--pure-white);
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* === ENHANCED SUPPORT OPTIONS === */
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .support-card {
+            background: var(--pure-white);
+            padding: 50px 40px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+            transition: var(--transition);
+        }
+
+        .support-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        .support-card:hover::before {
+            left: 100%;
+        }
+
+        .support-icon {
+            font-size: 3.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .support-card:hover .support-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .support-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        /* === ENHANCED SHEGE TOKEN SECTION === */
+        .shege-token {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--dark-gray);
+            padding: 60px 40px;
+            border-radius: 25px;
+            margin: 60px 0;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3);
+            border: 3px solid var(--light-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shege-token::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .shege-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .shege-token h2 {
+            color: var(--dark-gray);
+            position: relative;
+            z-index: 2;
+        }
+
+        .shege-token h2::after {
+            background: var(--dark-gray);
+        }
+
+        /* === ENHANCED CRYPTO DONATIONS === */
+        .crypto-section {
+            background: var(--pure-white);
+            position: relative;
+        }
+
+        .crypto-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .crypto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .crypto-card {
+            background: var(--off-white);
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 6px solid var(--primary-gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .crypto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .crypto-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .crypto-logo {
+            width: 50px;
+            height: 50px;
+            background: var(--light-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .crypto-address {
+            background: var(--pure-white);
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            position: relative;
+            word-break: break-all;
+            border: 2px solid var(--light-gray);
+            transition: var(--transition);
+        }
+
+        .crypto-address:hover {
+            border-color: var(--primary-gold);
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+            color: var(--dark-gray);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .copied-message {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark-gray);
+            color: var(--pure-white);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .copied-message.show {
+            opacity: 1;
+        }
+
+        /* === REAL PAYMENT LOGOS === */
+        .payment-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-right: 15px;
+        }
+
+        /* Crypto Logos */
+        .usdt-logo { background: #26A17B; color: white; }
+        .btc-logo { background: #F7931A; color: white; }
+        .eth-logo { background: #627EEA; color: white; }
+        .bnb-logo { background: #F3BA2F; color: black; }
+        .sol-logo { background: #00FFA3; color: black; }
+
+        /* Mobile Money Logos */
+        .mtn-logo { background: #FFCB05; color: black; font-weight: bold; }
+        .vodafone-logo { background: #E60000; color: white; font-weight: bold; }
+        .airteltigo-logo { background: #FF0000; color: white; font-weight: bold; }
+
+        /* Other Payment Logos */
+        .payeer-logo { background: #00A2E8; color: white; font-weight: bold; }
+        .payoneer-logo { background: #FF4800; color: white; font-weight: bold; }
+        .skrill-logo { background: #6E00FF; color: white; font-weight: bold; }
+        .wise-logo { background: #9FE870; color: black; font-weight: bold; }
+        .googlepay-logo { background: #4285F4; color: white; font-weight: bold; }
+        .westernunion-logo { background: #00AFEF; color: white; font-weight: bold; }
+        .moneygram-logo { background: #009CDE; color: white; font-weight: bold; }
+        .visa-logo { background: #1A1F71; color: white; font-weight: bold; }
+
+        /* === ENHANCED MOBILE MONEY === */
+        .mobile-money {
+            background: linear-gradient(135deg, var(--off-white), var(--soft-pink));
+            position: relative;
+        }
+
+        .mobile-money::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .mobile-money-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .mobile-card {
+            background: var(--pure-white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .mobile-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .mobile-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 15px 0;
+            color: var(--dark-gray);
+            background: var(--off-white);
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        /* === ENHANCED BANK & INTERNATIONAL PAYMENTS === */
+        .bank-payments {
+            background: var(--pure-white);
+            position: relative;
+        }
+
+        .bank-payments::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .payment-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .payment-card {
+            background: var(--off-white);
+            padding: 35px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            border-left: 6px solid var(--primary-gold);
+        }
+
+        .payment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .payment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .payment-details {
+            background: var(--pure-white);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+            border: 2px solid var(--light-gray);
+        }
+
+        .payment-details p {
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        /* === ENHANCED VOLUNTEER SECTION === */
+        .volunteer-section {
+            background: linear-gradient(135deg, var(--soft-pink), var(--off-white));
+            position: relative;
+        }
+
+        .volunteer-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .volunteer-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .volunteer-card {
+            background: var(--pure-white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .volunteer-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .volunteer-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .volunteer-card:hover .volunteer-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* === ENHANCED WISHLIST SECTION === */
+        .wishlist-section {
+            background: var(--pure-white);
+            position: relative;
+        }
+
+        .wishlist-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .wishlist-card {
+            background: var(--off-white);
+            padding: 35px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .wishlist-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .wishlist-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .wishlist-card:hover .wishlist-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .priority {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+
+        .priority-high {
+            background: #ffebee;
+            color: #c62828;
+            border: 2px solid #c62828;
+        }
+
+        .priority-medium {
+            background: #fff3e0;
+            color: #ef6c00;
+            border: 2px solid #ef6c00;
+        }
+
+        .priority-low {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 2px solid #2e7d32;
+        }
+
+        /* === ENHANCED IMPACT METRICS === */
+        .impact-metrics {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: var(--dark-gray);
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .metric-item {
+            padding: 30px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .metric-number {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* === ENHANCED FOOTER === */
+        footer {
+            background: linear-gradient(135deg, var(--dark-gray), #2c2c2c);
+            color: var(--pure-white);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--light-gold));
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-gold);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-gold);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--primary-gold);
+            color: var(--dark-gray);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px) rotate(5deg);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 1rem;
+            color: var(--light-gray);
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--pure-white);
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .page-hero {
+                padding: 150px 0 80px;
+            }
+
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .support-options, .crypto-grid, .mobile-money-grid, 
+            .payment-methods-grid, .volunteer-options, .wishlist-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .crypto-address {
+                font-size: 0.85rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* === SCROLL ANIMATION CLASSES === */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">SheGoldImpact</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="support.html" class="active">Support</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Support Our Mission</h1>
+            <p>Join us in creating sustainable impact through your generous support</p>
+        </div>
+    </section>
+
+    <!-- Support Options -->
+    <section class="container fade-in">
+        <div class="support-options">
+            <div class="support-card">
+                <div class="support-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h3>Crypto Donations</h3>
+                <p>Support us using cryptocurrency for fast, secure, and borderless transactions including our upcoming SheGold Token</p>
+                <a href="#crypto" class="btn">Donate Crypto</a>
+            </div>
+            <div class="support-card">
+                <div class="support-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile Money</h3>
+                <p>Quick and easy donations through mobile money services in Ghana - Instant and convenient</p>
+                <a href="#mobile-money" class="btn">Mobile Donations</a>
+            </div>
+            <div class="support-card">
+                <div class="support-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3>Bank & International</h3>
+                <p>Bank transfers, Visa, Western Union, MoneyGram and other international payment options</p>
+                <a href="#bank-payments" class="btn">Bank Transfer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SheGold Token Section -->
+    <section class="shege-token fade-in">
+        <div class="container">
+            <div class="shege-icon">
+                <i class="fas fa-gem"></i>
+            </div>
+            <h2>SheGold Token (SHEGE) - Coming Soon</h2>
+            <p><strong>Inspired by the Queen of Sheba's Legacy of Generous Giving</strong></p>
+            <p>Our native cryptocurrency token designed for modern philanthropy, combining ancient wisdom with blockchain technology to create sustainable impact.</p>
+            <p><strong>Vision:</strong> Digital philanthropy that transcends borders and creates permanent funding for humanitarian work</p>
+            <div style="margin-top: 30px;">
+                <a href="contact.html" class="btn" style="background: var(--dark-gray); color: white;">Get Early Access Updates</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crypto Donations -->
+    <section class="crypto-section fade-in" id="crypto">
+        <div class="container">
+            <h2>Cryptocurrency Donations</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 40px;">We accept donations in various cryptocurrencies. Your support helps us continue our philanthropic work and build sustainable impact.</p>
+            
+            <div class="crypto-grid">
+                <!-- USDT -->
+                <div class="crypto-card">
+                    <div class="crypto-header">
+                        <div class="payment-logo usdt-logo">USDT</div>
+                        <h3>Tether (TRC-20)</h3>
+                    </div>
+                    <div class="crypto-address-container">
+                        <div class="crypto-address">
+                            TByjv3z73VQBWB4qnJmLsiCLM35cj9QWXM
+                            <div class="copied-message">Copied!</div>
+                        </div>
+                        <button class="copy-btn" data-address="TByjv3z73VQBWB4qnJmLsiCLM35cj9QWXM">Copy Address</button>
+                    </div>
+                </div>
+
+                <!-- Bitcoin -->
+                <div class="crypto-card">
+                    <div class="crypto-header">
+                        <div class="payment-logo btc-logo">BTC</div>
+                        <h3>Bitcoin</h3>
+                    </div>
+                    <div class="crypto-address-container">
+                        <div class="crypto-address">
+                            bc1qr0xfzkelhz3xpf53h57ew5uks5hsqkjwwavuzx
+                            <div class="copied-message">Copied!</div>
+                        </div>
+                        <button class="copy-btn" data-address="bc1qr0xfzkelhz3xpf53h57ew5uks5hsqkjwwavuzx">Copy Address</button>
+                    </div>
+                </div>
+
+                <!-- Ethereum -->
+                <div class="crypto-card">
+                    <div class="crypto-header">
+                        <div class="payment-logo eth-logo">ETH</div>
+                        <h3>Ethereum</h3>
+                    </div>
+                    <div class="crypto-address-container">
+                        <div class="crypto-address">
+                            0x161caE357e1C08022A07b79F124fA395F24bE053
+                            <div class="copied-message">Copied!</div>
+                        </div>
+                        <button class="copy-btn" data-address="0x161caE357e1C08022A07b79F124fA395F24bE053">Copy Address</button>
+                    </div>
+                </div>
+
+                <!-- BNB -->
+                <div class="crypto-card">
+                    <div class="crypto-header">
+                        <div class="payment-logo bnb-logo">BNB</div>
+                        <h3>Binance Coin</h3>
+                    </div>
+                    <div class="crypto-address-container">
+                        <div class="crypto-address">
+                            0x161caE357e1C08022A07b79F124fA395F24bE053
+                            <div class="copied-message">Copied!</div>
+                        </div>
+                        <button class="copy-btn" data-address="0x161caE357e1C08022A07b79F124fA395F24bE053">Copy Address</button>
+                    </div>
+                </div>
+
+                <!-- Solana -->
+                <div class="crypto-card">
+                    <div class="crypto-header">
+                        <div class="payment-logo sol-logo">SOL</div>
+                        <h3>Solana</h3>
+                    </div>
+                    <div class="crypto-address-container">
+                        <div class="crypto-address">
+                            YoxQ94taomLRs7wsDcDYL1NDjBenpcrVNMCmNp1m7yQ
+                            <div class="copied-message">Copied!</div>
+                        </div>
+                        <button class="copy-btn" data-address="YoxQ94taomLRs7wsDcDYL1NDjBenpcrVNMCmNp1m7yQ">Copy Address</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 40px;">
+                <p><strong>Note:</strong> After making a crypto donation, please email us at shegoldimpact@gmail.com with your transaction details for proper acknowledgment and receipt.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Money -->
+    <section class="mobile-money fade-in" id="mobile-money">
+        <div class="container">
+            <h2>Mobile Money Donations</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 40px;">Support our mission through convenient mobile money transfers in Ghana. Same numbers work across all major networks.</p>
+            
+            <div class="mobile-money-grid">
+                <div class="mobile-card">
+                    <div class="mobile-icon">
+                        <div class="payment-logo mtn-logo">MTN</div>
+                    </div>
+                    <h3>MTN Mobile Money</h3>
+                    <div class="mobile-number">+233249845856</div>
+                    <p>Send to this number via MTN MoMo</p>
+                    <p><small>Name: SheGoldImpact</small></p>
+                </div>
+                
+                <div class="mobile-card">
+                    <div class="mobile-icon">
+                        <div class="payment-logo vodafone-logo">VODA</div>
+                    </div>
+                    <h3>Vodafone Cash</h3>
+                    <div class="mobile-number">+233208559409</div>
+                    <p>Send to this number via Vodafone Cash</p>
+                    <p><small>Name: SheGoldImpact</small></p>
+                </div>
+                
+                <div class="mobile-card">
+                    <div class="mobile-icon">
+                        <div class="payment-logo airteltigo-logo">A-T</div>
+                    </div>
+                    <h3>AirtelTigo Money</h3>
+                    <div class="mobile-number">+233267788242</div>
+                    <p>Send to this number via AirtelTigo Money</p>
+                    <p><small>Name: SheGoldImpact</small></p>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 40px;">
+                <p><strong>Note:</strong> After making a mobile money donation, please send us a WhatsApp message with your name and donation amount for proper acknowledgment and receipt.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bank & International Payments -->
+    <section class="bank-payments fade-in" id="bank-payments">
+        <div class="container">
+            <h2>Bank Transfers & International Payments</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 40px;">Multiple options for bank transfers and international payments to support our mission.</p>
+            
+            <div class="payment-methods-grid">
+                <!-- Bank Transfer -->
+                <div class="payment-card">
+                    <div class="payment-header">
+                        <div class="payment-logo visa-logo">VISA</div>
+                        <h3>Bank Transfer (Ghana)</h3>
+                    </div>
+                    <p>Direct bank transfer to our Access Bank Ghana account</p>
+                    <div class="payment-details">
+                        <p><strong>Bank:</strong> Access Bank Ghana</p>
+                        <p><strong>Account Name:</strong> Robert Ashley Nikoi</p>
+                        <p><strong>Account Number:</strong> 0481628455431</p>
+                        <p><strong>Branch:</strong> Koforidua, Ghana</p>
+                        <p><strong>Currency:</strong> GHS (Ghana Cedis)</p>
+                    </div>
+                </div>
+
+                <!-- Western Union -->
+                <div class="payment-card">
+                    <div class="payment-header">
+                        <div class="payment-logo westernunion-logo">WU</div>
+                        <h3>Western Union</h3>
+                    </div>
+                    <p>Send funds internationally via Western Union</p>
+                    <div class="payment-details">
+                        <p><strong>Receiver Name:</strong> Robert Ashley Nikoi</p>
+                        <p><strong>Address:</strong> CI/45A/11 Densuano, Koforidua</p>
+                        <p><strong>City:</strong> Koforidua</p>
+                        <p><strong>Country:</strong> Ghana</p>
+                        <p><strong>ID Required:</strong> Yes (Passport/ID Card)</p>
+                    </div>
+                </div>
+
+                <!-- MoneyGram -->
+                <div class="payment-card">
+                    <div class="payment-header">
+                        <div class="payment-logo moneygram-logo">MG</div>
+                        <h3>MoneyGram</h3>
+                    </div>
+                    <p>International money transfers via MoneyGram</p>
+                    <div class="payment-details">
+                        <p><strong>Receiver Name:</strong> Robert Ashley Nikoi</p>
+                        <p><strong>Address:</strong> CI/45A/11 Densuano, Koforidua</p>
+                        <p><strong>City:</strong> Koforidua</p>
+                        <p><strong>Country:</strong> Ghana</p>
+                        <p><strong>Reference Number:</strong> Required for pickup</p>
+                    </div>
+                </div>
+
+                <!-- Digital Wallets -->
+                <div class="payment-card">
+                    <div class="payment-header">
+                        <div class="payment-logo payeer-logo">P</div>
+                        <h3>Payeer</h3>
+                    </div>
+                    <p>Digital wallet payments via Payeer</p>
+                    <div class="payment-details">
+                        <p><strong>Payeer Account:</strong> Pxxxxxxxxx</p>
+                        <p><strong>Email:</strong> shegoldimpact@gmail.com</p>
+                        <p><strong>Currency:</strong> USD, EUR, RUB</p>
+                        <p><strong>Note:</strong> Include donation purpose</p>
+                    </div>
+                </div>
+
+                <div class="payment-card">
+                    <div class="payment-header">
+                        <div class="payment-logo payoneer-logo">P</div>
+                        <h3>Payoneer</h3>
+                    </div>
+                    <p>Global payment platform</p>
+                    <div class="payment-details">
+                        <p><strong>Payoneer Email:</strong> shegoldimpact@gmail.com</p>
+                        <p><strong>Receiver:</strong> SheGoldImpact</p>
+                        <p><strong>Currency:</strong> Multiple currencies</p>
+                        <p><strong>Note:</strong> Business payments accepted</p>
+                    </div>
+                </div>
+
+                <div class="payment-card">
+                    <div class="payment-header">
+                        <div class="payment-logo skrill-logo">S</div>
+                        <h3>Skrill</h3>
+                    </div>
+                    <p>Fast digital wallet transfers</p>
+                    <div class="payment-details">
+                        <p><strong>Skrill Email:</strong> shegoldimpact@gmail.com</p>
+                        <p><strong>Account Name:</strong> SheGoldImpact</p>
+                        <p><strong>Currency:</strong> Multiple options</p>
+                        <p><strong>Note:</strong> Instant transfers</p>
+                    </div>
+                </div>
+
+                <div class="payment-card">
+                    <div class="payment-header">
+                        <div class="payment-logo wise-logo">W</div>
+                        <h3>Wise (TransferWise)</h3>
+                    </div>
+                    <p>Low-cost international transfers</p>
+                    <div class="payment-details">
+                        <p><strong>Wise Email:</strong> shegoldimpact@gmail.com</p>
+                        <p><strong>Bank Details:</strong> Available on request</p>
+                        <p><strong>Currency:</strong> 40+ currencies</p>
+                        <p><strong>Note:</strong> Best for international</p>
+                    </div>
+                </div>
+
+                <div class="payment-card">
+                    <div class="payment-header">
+                        <div class="payment-logo googlepay-logo">G</div>
+                        <h3>Google Pay</h3>
+                    </div>
+                    <p>Contactless payments via Google Pay</p>
+                    <div class="payment-details">
+                        <p><strong>Google Pay:</strong> shegoldimpact@gmail.com</p>
+                        <p><strong>Phone:</strong> +233249845856</p>
+                        <p><strong>Supported:</strong> Android devices</p>
+                        <p><strong>Note:</strong> Link to mobile money</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 40px;">
+                <p><strong>Important:</strong> After making any bank or international transfer, please email us at shegoldimpact@gmail.com with your transaction details for proper acknowledgment and receipt.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Section -->
+    <section class="volunteer-section fade-in" id="volunteer">
+        <div class="container">
+            <h2>Volunteer Opportunities</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 40px;">Join our team of dedicated volunteers and make a hands-on difference in our community. We welcome both local and international volunteers.</p>
+            
+            <div class="volunteer-options">
+                <div class="volunteer-card">
+                    <div class="volunteer-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3>Donation Drives</h3>
+                    <p>Help organize, pack, and distribute donation items during our events and outreach programs</p>
+                </div>
+                
+                <div class="volunteer-card">
+                    <div class="volunteer-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Teaching & Mentoring</h3>
+                    <p>Share your knowledge and skills with children in our programs through tutoring and mentorship</p>
+                </div>
+                
+                <div class="volunteer-card">
+                    <div class="volunteer-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h3>Event Support</h3>
+                    <p>Assist with planning and execution of our outreach events, fundraisers, and community programs</p>
+                </div>
+                
+                <div class="volunteer-card">
+                    <div class="volunteer-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Technical Skills</h3>
+                    <p>Help with website development, social media management, IT support, or digital skills training</p>
+                </div>
+
+                <div class="volunteer-card">
+                    <div class="volunteer-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Medical Professionals</h3>
+                    <p>Doctors, nurses, and healthcare workers for our medical outreach programs</p>
+                </div>
+
+                <div class="volunteer-card">
+                    <div class="volunteer-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Media & Documentation</h3>
+                    <p>Photography, videography, and storytelling to document our impact and share stories</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="contact.html" class="btn">Become a Volunteer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishlist Section -->
+    <section class="wishlist-section fade-in">
+        <div class="container">
+            <h2>Our Wishlist</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 40px;">These are the items we currently need to support our programs and beneficiaries. Your in-kind donations make a direct impact.</p>
+            
+            <div class="wishlist-grid">
+                <div class="wishlist-card">
+                    <div class="wishlist-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Clothing</h3>
+                    <p>New or gently used clothes for children and adults of all sizes</p>
+                    <span class="priority priority-high">High Priority</span>
+                </div>
+                
+                <div class="wishlist-card">
+                    <div class="wishlist-icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <h3>Shoes</h3>
+                    <p>All sizes, especially children's shoes and school footwear</p>
+                    <span class="priority priority-high">High Priority</span>
+                </div>
+                
+                <div class="wishlist-card">
+                    <div class="wishlist-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Food Supplies</h3>
+                    <p>Non-perishable food items, rice, oil, canned goods, and cooking ingredients</p>
+                    <span class="priority priority-high">High Priority</span>
+                </div>
+                
+                <div class="wishlist-card">
+                    <div class="wishlist-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Educational Materials</h3>
+                    <p>Books, stationery, school bags, learning aids, and educational toys</p>
+                    <span class="priority priority-medium">Medium Priority</span>
+                </div>
+                
+                <div class="wishlist-card">
+                    <div class="wishlist-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Computers & Tablets</h3>
+                    <p>For our planned computer lab and digital training programs</p>
+                    <span class="priority priority-medium">Medium Priority</span>
+                </div>
+                
+                <div class="wishlist-card">
+                    <div class="wishlist-icon">
+                        <i class="fas fa-pump-medical"></i>
+                    </div>
+                    <h3>Medical Supplies</h3>
+                    <p>First aid kits, basic medical equipment, and hygiene products</p>
+                    <span class="priority priority-medium">Medium Priority</span>
+                </div>
+
+                <div class="wishlist-card">
+                    <div class="wishlist-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h3>Bedding & Linens</h3>
+                    <p>Blankets, bedsheets, pillows, and mosquito nets for orphanages</p>
+                    <span class="priority priority-medium">Medium Priority</span>
+                </div>
+
+                <div class="wishlist-card">
+                    <div class="wishlist-icon">
+                        <i class="fas fa-soap"></i>
+                    </div>
+                    <h3>Hygiene Products</h3>
+                    <p>Soap, toothpaste, sanitary pads, detergents, and cleaning supplies</p>
+                    <span class="priority priority-high">High Priority</span>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="contact.html" class="btn">Donate Items</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Metrics -->
+    <section class="impact-metrics fade-in">
+        <div class="container">
+            <h2>Your Impact</h2>
+            <p class="text-center" style="margin-bottom: 40px; color: var(--dark-gray);">See how your support transforms lives and creates sustainable change in communities</p>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <span class="metric-number">7+</span>
+                    <span>Years of Service</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">5,000+</span>
+                    <span>Lives Impacted</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">15+</span>
+                    <span>Projects Completed</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">4</span>
+                    <span>Annual Donations</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">100%</span>
+                    <span>Transparency</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SheGoldImpact</h3>
+                    <p>Care. Clothe. Feed. Educate. Include.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +233249845856</li>
+                        <li><i class="fas fa-phone"></i> +233208559409</li>
+                        <li><i class="fas fa-phone"></i> +233267788242</li>
+                        <li><i class="fas fa-envelope"></i> shegoldimpact@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SheGoldImpact. All Rights Reserved. | Powered by Ritemasta Publications</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Copy to Clipboard Functionality
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const address = this.getAttribute('data-address');
+                const message = this.previousElementSibling.querySelector('.copied-message');
+                
+                // Copy to clipboard
+                navigator.clipboard.writeText(address).then(() => {
+                    // Show copied message
+                    message.classList.add('show');
+                    
+                    // Hide message after 2 seconds
+                    setTimeout(() => {
+                        message.classList.remove('show');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = address;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    message.classList.add('show');
+                    setTimeout(() => {
+                        message.classList.remove('show');
+                    }, 2000);
+                });
+            });
+        });
+
+        // Scroll Animation Functionality
+        window.addEventListener('scroll', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(function(el) {
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        });
+
+        // Trigger once on load
+        window.dispatchEvent(new Event('scroll'));
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
